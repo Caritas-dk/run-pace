@@ -1,0 +1,9 @@
+{
+  "name": "audio-route",
+  "version": "1.0.0",
+  "description": "Registrerer tab af høretelefoner (K28)",
+  "main": "index.ts",
+  "license": "UNLICENSED",
+  "author": "TEAM INGBERG",
+  "homepage": "https://github.com/Caritas-dk/run-pace"
+}
