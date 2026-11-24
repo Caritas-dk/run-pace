@@ -16,6 +16,7 @@ import {
   validateTemplate,
   WorkoutTemplate,
 } from '../core/plan';
+import { shiftPaces } from '../core/presets';
 import { DEFAULT_TOLERANCE } from '../core/tolerance';
 import { formatDistance, formatDuration, formatPace, toMps } from '../core/units';
 import * as db from '../storage/db';
@@ -263,6 +264,11 @@ export default function Builder() {
           </>
         )}
         <T variant="small">{t('stagesCount', { n: expanded })}</T>
+        <T variant="label">{t('allPaces')}</T>
+        <View style={{ flexDirection: 'row', gap: space.s }}>
+          <Button style={{ flex: 1 }} variant="secondary" label={t('shiftFaster')} onPress={() => setItems(shiftPaces(tpl.items, -5))} />
+          <Button style={{ flex: 1 }} variant="secondary" label={t('shiftSlower')} onPress={() => setItems(shiftPaces(tpl.items, 5))} />
+        </View>
         {topErrors.filter((e) => e.field !== 'name' || triedSave).map((e, k) => (
           <FieldError key={k} text={planErrorText(e, t, settings, unit, { total: tpl.totalDistanceM })} />
         ))}

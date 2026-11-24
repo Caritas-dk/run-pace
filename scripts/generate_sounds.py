@@ -49,8 +49,10 @@ S = {
  'B02': tone(440, 260),
  'B03': tone(1320, 150) + silence(120) + tone(1320, 150),
  'B04': tone(440, 170) + silence(120) + tone(440, 170),
- 'B05': tone(523.25, 240) + silence(40) + tone(783.99, 240),
- 'B06': tone(783.99, 240) + silence(40) + tone(523.25, 240),
+ # B05 Stigende: fire bip, der bliver gradvist lysere (Øg tempoet)
+ 'B05': tone(523.25, 190) + silence(50) + tone(659.25, 190) + silence(50) + tone(783.99, 190) + silence(50) + tone(1046.5, 190),
+ # B06 Faldende: fire bip, der bliver gradvist mørkere (Sænk tempoet)
+ 'B06': tone(1046.5, 190) + silence(50) + tone(783.99, 190) + silence(50) + tone(659.25, 190) + silence(50) + tone(523.25, 190),
  'B07': tone(880, 700, decay=0.22, attack=3, release=60, harmonics=[(2.76, 0.35), (5.4, 0.15)]),
  'B08': tone(1000, 120, 'soft_square') + silence(80) + tone(1000, 120, 'soft_square') + silence(80) + tone(1000, 120, 'soft_square'),
  'B09': tone(660, 900, attack=180, release=300),

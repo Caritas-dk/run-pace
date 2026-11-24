@@ -4,6 +4,7 @@ import { useCallback, useState } from 'react';
 import { Modal, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { WorkoutTemplate } from '../core/plan';
+import { buildPreset, PRESETS } from '../core/presets';
 import { formatDistance, formatDuration, formatPace } from '../core/units';
 import { runner } from '../services/runner';
 import * as db from '../storage/db';
@@ -56,6 +57,17 @@ export default function Home() {
         ) : null}
         <Button big variant="accent" icon="play" label={t('quickStart')} onPress={() => router.push('/quick')} accessibilityHint={t('quickStartSub')} />
         <Button big icon="plus" label={t('buildWorkout')} onPress={() => router.push('/builder')} accessibilityHint={t('buildWorkoutSub')} />
+
+        <Section title={t('suggestions')}>
+          {PRESETS.map((p) => (
+            <ListRow
+              key={p.key}
+              title={settings.lang === 'da' ? p.nameDa : p.nameEn}
+              subtitle={describeTemplate(buildPreset(p, { baseSec: p.baseSec, length: p.length.def, lang: settings.lang }, 0), settings)}
+              onPress={() => router.push({ pathname: '/preset', params: { key: p.key } })}
+            />
+          ))}
+        </Section>
 
         <Section
           title={t('favorites')}

@@ -19,7 +19,7 @@ Udviklet efter *Run Pace kravspecifikation v1.0* (TEAM INGBERG, 24. november 202
 
 ```bash
 npm install
-npm test            # 38 automatiske test af beregning og coaching (A01-A20)
+npm test            # 43 automatiske test af beregning og coaching (A01-A20)
 npm run typecheck
 npm run lint
 ```
@@ -52,6 +52,7 @@ src/
     coach.ts       K17-K22 afvigelse, ventetid, Stabil-tilstand
     session.ts     K12-K16, K29-K37 tilstandsmaskine for en tur
     stats.ts       K43-K46 resultat, tid i målzone, læring
+    presets.ts     Forslag til ture, grundtempo, skalering af længde
   services/    Lyd, lokation og runner (binder motor, GPS, lyd og lager sammen)
   storage/     SQLite (K47/K48)
   app/         Skærme (Expo Router)
@@ -82,6 +83,7 @@ Motoren (`SessionEngine`) er deterministisk. Den modtager GPS-punkter og tidsimp
 | K02 Uden konto og internet | ✅ | Ingen netværkskald. Ruten tegnes uden kortfliser |
 | K03 Hurtig start / Byg træning | ✅ | `app/quick.tsx`, `app/builder.tsx` |
 | K04 Bibliotek, favoritter, fast kopi | ✅ | `app/library.tsx`, `freezePlan` |
+| Forslag til ture (afsnit 3) | ✅ | `core/presets.ts`, `app/preset.tsx`: Stabil, Progressiv, Lang og Intervaller kan justeres i længde og grundtempo |
 | K05-K06 Fire enheder, konvertering | ✅ | `core/units.ts` (A01) |
 | K07 0,10-50,00 km, etapesum | ✅ | `validateTemplate` (A02, A03) |
 | K08 Tidsopdelt, estimat ≤ 50 km | ✅ | `estimateDistance` |
@@ -93,7 +95,7 @@ Motoren (`SessionEngine`) er deterministisk. Den modtager GPS-punkter og tidsimp
 | K15 Pause | ✅ | (A16) |
 | K16 Stop før målet, gem eller kassér | ✅ | Langt tryk på Stop, derefter bekræftelse |
 | K17-K22 Coaching | ✅ | `coach.ts` (A05-A11) |
-| K23-K24 Ti lyde, standard B06/B05, ≤ 1,5 s | ✅ | (A15) |
+| K23-K24 Ti lyde, standard B06/B05, ≤ 1,5 s | ✅ | (A15). Øg tempoet = B05, fire bip der bliver lysere. Sænk tempoet = B06, fire bip der bliver mørkere |
 | K25-K27 Musik, kort dæmpning, Test lyd | 🔧 | `services/audio.ts` (A14) |
 | K28 Opkald, høretelefoner | 🔧 | Signal annulleres, hvis det ikke starter inden 1 s, og `audio-route` registrerer tab af høretelefoner (A22) |
 | K29 GPS-start | ✅/🔧 | Klar til start. Tidstræning kan startes uden GPS |

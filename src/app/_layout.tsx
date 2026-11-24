@@ -87,6 +87,7 @@ export default function RootLayout() {
         >
           <Stack.Screen name="index" options={{ title: 'Run Pace', headerShown: false }} />
           <Stack.Screen name="quick" options={{ title: t('quickStart') }} />
+          <Stack.Screen name="preset" options={{ title: t('adjustWorkout') }} />
           <Stack.Screen name="library" options={{ title: t('workouts') }} />
           <Stack.Screen name="builder" options={{ title: t('buildWorkout') }} />
           <Stack.Screen name="ready" options={{ title: t('readyToStart') }} />
